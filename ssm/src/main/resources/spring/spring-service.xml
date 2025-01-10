@@ -7,7 +7,7 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
     <!-- 扫描service相关的bean -->
-    <context:component-scan base-package="com.martin.service" />
+    <context:component-scan base-package="com.martin" />
     <!--BookServiceImpl注入到IOC容器中-->
     <!-- 配置事务管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

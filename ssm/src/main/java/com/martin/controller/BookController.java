@@ -6,6 +6,7 @@ import com.martin.pojo.Books;
 import com.martin.pojo.Result;
 import com.martin.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,11 +18,11 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping("/list")
+    @RequestMapping("/queryById/{id}")
     @ResponseBody
-    public String list(){
+    public String queryById(@PathVariable("id") Integer id){
 
-        Books books = bookService.queryBookById(1);
+        Books books = bookService.queryBookById(id);
 
         String jsonString = JSON.toJSONString(books);
 

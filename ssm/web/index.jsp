@@ -22,7 +22,7 @@
 </head>
 <body>
 <h3>
-    <a href="book/list">点击进入列表页</a>
+    <a href="book/queryById/1">点击进入列表页</a>
 </h3>
 </body>
 </html>

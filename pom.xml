@@ -98,6 +98,12 @@
             <artifactId>lombok</artifactId>
             <version>1.18.34</version>
         </dependency>
+        <!--aop+aspectj坐标导入，但是aop在spring 中已经默认导入了，所以可以不用导入-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.19</version>
+        </dependency>
     </dependencies>
 
     <!--Maven资源过滤设置-->
