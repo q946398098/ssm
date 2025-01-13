@@ -25,4 +25,6 @@
 
     <mvc:resources mapping="/img/**" location="classpath:/img/" />
     <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
+    <mvc:resources mapping="/layui/**" location="/WEB-INF/resources/layui/" />
+    <mvc:resources mapping="/boostrap/**" location="/WEB-INF/resources/bootstrap/" />
 </beans>
