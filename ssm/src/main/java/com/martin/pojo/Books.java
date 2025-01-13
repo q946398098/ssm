@@ -6,8 +6,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Books {
-    private int bookID;
+    private int bookId;
     private String bookName;
     private int bookCounts;
     private String detail;
+    private String pictureUrl;
 }

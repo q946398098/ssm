@@ -8,8 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BorrowBookDto {
-    private int bookID;
-    private String bookName;
+    private int bookId;
     private String borrowerName;
     private String borrowerPhone;
 }

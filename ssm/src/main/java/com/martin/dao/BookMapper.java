@@ -1,6 +1,7 @@
 package com.martin.dao;
 import com.martin.pojo.Books;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -16,4 +17,7 @@ public interface BookMapper {
     Books queryBookById(int id);
     //查询全部Book,返回list集合
     List<Books> queryAllBook();
+
+    @Update("update ssmbuild.books set bookCounts = bookCounts - 1 where bookId = #{bookId}")
+    boolean rentBook(int bookId);
 }
