@@ -16,6 +16,22 @@
         font-size: 14px;
         color: #fff;
     }
+    #content-filter{
+        height: 80px;
+        border-bottom: 1px solid black;
+    }
+    #content-filter .content-filter-header{
+        color: #fff;
+        line-height: 28px;
+        background-color: black;
+    }
+    #content-filter .content-filter-header p{
+        text-indent: 14px;
+        font-weight: bold;
+    }
+    #martin-table-search-area{
+        height: calc(100% - 30px);
+    }
 </style>
 <body>
 <div class="layui-layout layui-layout-admin">
@@ -51,16 +67,18 @@
                         <dd><a href='javascript:openPage("/user","人员列表");'>人员列表</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">menu group 2</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">list 1</a></dd>
-                    </dl>
-                </li>
             </ul>
         </div>
     </div>
     <div class="layui-body">
+        <div id="content-filter">
+            <div class="content-filter-header">
+                <p>Filter</p>
+            </div>
+            <div id="martin-table-search-area">
+
+            </div>
+        </div>
         <div id="content-body"></div>
     </div>
     <div class="layui-footer">
