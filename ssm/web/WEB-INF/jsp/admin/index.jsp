@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: martin.hu
-  Date: 1/13/2025
-  Time: 4:20 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,10 +5,23 @@
 </head>
 <link href="/layui/css/layui.css" rel="stylesheet">
 <script src="/resources/static/jquery-3.6.0.min.js"></script>
+<style>
+    .layui-layout-admin .layui-header .menu-title{
+        line-height: 60px;
+        position: absolute;
+        top: 0;
+        left: 200px;
+        right: 220px;
+        text-align: center;
+        font-size: 14px;
+        color: #fff;
+    }
+</style>
 <body>
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
         <div class="layui-logo layui-hide-xs layui-bg-black">后台管理</div>
+        <div class="menu-title"></div>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item layui-hide layui-show-sm-inline-block">
                 <a href="javascript:;">
@@ -42,7 +48,7 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href='javascript:;'>人员管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href='javascript:openPage("/user/list");'>人员列表</a></dd>
+                        <dd><a href='javascript:openPage("/user","人员列表");'>人员列表</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
@@ -54,22 +60,12 @@
             </ul>
         </div>
     </div>
-    <div class="layui-body" id="content-body" >
-        <!-- 内容主体区域 -->
-        <div style="padding: 15px;">
-            <blockquote class="layui-elem-quote layui-text"></blockquote>
-            <div class="layui-card layui-panel">
-                <div class="layui-card-header" id="content-body-header">
-                </div>
-                <div class="layui-card-body" id="content-body-content">
-                </div>
-            </div>
-            <br><br>
-        </div>
+    <div class="layui-body">
+        <div id="content-body"></div>
     </div>
     <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        底部固定区域
+        <p style="text-align: center">2025</p>
+
     </div>
 </div>
 
@@ -77,8 +73,9 @@
 </html>
 <script src="/layui/layui.js"></script>
 <script>
-    function openPage(url){
-       $('#content-body-content').load(url)
+    function openPage(url,title){
+       $('#content-body').load(url)
+       $('.layui-layout-admin .layui-header .menu-title').html(title)
     }
     //JS
     layui.use(['element', 'layer', 'util'], function(){

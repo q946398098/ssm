@@ -10,4 +10,11 @@
     <typeAliases>
         <package name="com.martin.pojo"/>
     </typeAliases>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="helperDialect" value="mysql"/>  <!-- 配置数据库方言 -->
+            <property name="reasonable" value="true"/>
+            <property name="supportMethodsArguments" value="true"/>
+        </plugin>
+    </plugins>
 </configuration>
