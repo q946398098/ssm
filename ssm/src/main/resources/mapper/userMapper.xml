@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.martin.dao.UserMapper">
+    <!--增加一个Book-->
+    <insert id="add" parameterType="com.martin.pojo.dto.UserDto">
+        insert into ssmbuild.USER
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ds_username != null">ds_username,</if>
+            <if test="ds_email != null">ds_email,</if>
+            <if test="ds_password != null">ds_password,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ds_username != null">#{ds_username},</if>
+            <if test="ds_email != null">#{ds_email},</if>
+            <if test="ds_password != null">#{ds_password},</if>
+        </trim>
+    </insert>
+
+
+    <update id="update" parameterType="com.martin.pojo.dto.UserDto">
+        update ssmbuild.USER
+        <set>
+            <if test="ds_username != null">ds_username = #{ds_username},</if>
+            <if test="ds_email != null">ds_email = #{ds_email},</if>
+            <if test="ds_password != null">ds_password = #{ds_password},</if>
+        </set>
+        where cd_user = #{cd_user}
+    </update>
+
+</mapper>

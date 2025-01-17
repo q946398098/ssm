@@ -15,7 +15,7 @@ public class Result<T> {
     public static <T> Result<T> success(T data) {
         return new Result<>(0, "success", data);
     }
-    public static <T> Result success() {
+    public static <T> Result<T> success() {
         return new Result(0, "success",null);
     }
     public static <T> Result<T> error(String msg) {

@@ -31,6 +31,12 @@
     }
     #martin-table-search-area{
         height: calc(100% - 30px);
+        display: flex;
+        align-items: center;
+
+    }
+    #id_user_table_search{
+        width: 100%;
     }
 </style>
 <body>
