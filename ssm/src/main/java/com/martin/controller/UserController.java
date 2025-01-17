@@ -61,12 +61,10 @@ public class UserController {
         return JSON.toJSONString(Result.success());
     }
 
-    @DeleteMapping
+    @DeleteMapping("/deleteBatch")
     @ResponseBody
-    public String deleteBatch(@RequestParam List ids){
-        for (int i = 0; i <ids.size() ; i++) {
-            ids.set(i, Integer.parseInt(ids.get(i).toString()));
-        }
+    public String deleteBatch(@RequestParam List<Integer> ids){
+
         userService.deleteUsers(ids);
         return JSON.toJSONString(Result.success());
     }

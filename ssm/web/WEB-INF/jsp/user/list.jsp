@@ -143,12 +143,10 @@
                     }
                     /*刪除邏輯*/
                     $.ajax({
-                        url: '/user/deleteUsers',
+                        url: '/user/deleteBatch?ids='+data.map(item => item.cd_user).join(','),
                         type: 'DELETE',
-                        data: {
-                            ids: data.map(item => item.cd_user).join(',')
-                        },
                         success: function(res){
+                            res = JSON.parse(res)
                             if(res.code === 0){
                                 layer.msg('删除成功');
                                 user_table.reload();
