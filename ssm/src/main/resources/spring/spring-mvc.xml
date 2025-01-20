@@ -2,16 +2,45 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/mvc
-    https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    https://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
     <!-- 配置SpringMVC -->
+
+    <!-- 配置ContentNegotiationManager ,防止响应中文乱码 -->
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="defaultContentType" value="application/json;charset=utf-8"/>
+    </bean>
+
+
+    <!--@ResponseBody的作用是将控制器方法的返回值直接写入HTTP响应体中，而不是通过视图解析器返回一个页面。这意味着返回值可以是任意类型，例如字符串、JSON对象、XML数据等。-->
     <!-- 1.开启SpringMVC注解驱动 -->
-    <mvc:annotation-driven />
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                        <property name="propertyNamingStrategy">
+                            <!--驼峰设置为下划线-->
+                            <!--util标签是用来引用静态字段的方法-->
+                            <util:constant static-field="com.fasterxml.jackson.databind.PropertyNamingStrategy.SNAKE_CASE"/>
+                        </property>
+                    </bean>
+                </property>
+                <property name="defaultCharset" value="UTF-8"/>
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
     <!-- 2.静态资源默认servlet配置-->
     <mvc:default-servlet-handler/>
     <!-- 3.配置jsp 显示ViewResolver视图解析器 -->

@@ -29,11 +29,9 @@ public class UserController {
 
     @GetMapping("/list")
     @ResponseBody
-    public String list(UserListDto userListDto){
-
+    public Result<PageInfo<User>> list(UserListDto userListDto){
         PageInfo<User> userPageInfo = userService.queryAllUser(userListDto);
-
-        return JSON.toJSONString(Result.success(userPageInfo));
+        return Result.success(userPageInfo);
     }
 
 

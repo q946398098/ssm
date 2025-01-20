@@ -20,7 +20,7 @@ public class MyAdvice {
         System.out.println("before");
     }
 
-    @Around("MyAdvice.logPt()")
+//    @Around("MyAdvice.logPt()")
     public Object around(ProceedingJoinPoint pjp) throws Throwable {
         String classNAme = pjp.getTarget().getClass().getName();
         String methodName = pjp.getSignature().getName();
